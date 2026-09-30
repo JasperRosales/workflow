@@ -28,47 +28,47 @@
 }
 
 :root {
-  --background: #f5f5f0;
-  --foreground: #1a1a1a;
+  --background: #f7f1de;
+  --foreground: #4e220f;
   --card: #ffffff;
-  --card-foreground: #1a1a1a;
+  --card-foreground: #4e220f;
   --popover: #ffffff;
-  --popover-foreground: #1a1a1a;
-  --primary: #1a1a1a;
-  --primary-foreground: #f5f5f0;
-  --secondary: #e5e5e0;
-  --secondary-foreground: #1a1a1a;
-  --muted: #e5e5e0;
-  --muted-foreground: #6b6b6b;
-  --accent: #f5f5f0;
-  --accent-foreground: #1a1a1a;
+  --popover-foreground: #4e220f;
+  --primary: #9d6638;
+  --primary-foreground: #f7f1de;
+  --secondary: #b0ba99;
+  --secondary-foreground: #4e220f;
+  --muted: #b0ba99;
+  --muted-foreground: #6b5b4f;
+  --accent: #9d6638;
+  --accent-foreground: #f7f1de;
   --destructive: #dc2626;
-  --destructive-foreground: #f5f5f0;
-  --border: #1a1a1a;
-  --input: #1a1a1a;
-  --ring: #1a1a1a;
+  --destructive-foreground: #f7f1de;
+  --border: #4e220f;
+  --input: #4e220f;
+  --ring: #9d6638;
 }
 
 .dark {
-  --background: #1a1a1a;
-  --foreground: #f5f5f0;
-  --card: #252525;
-  --card-foreground: #f5f5f0;
-  --popover: #252525;
-  --popover-foreground: #f5f5f0;
-  --primary: #f5f5f0;
-  --primary-foreground: #1a1a1a;
-  --secondary: #333333;
-  --secondary-foreground: #f5f5f0;
-  --muted: #333333;
-  --muted-foreground: #a3a3a3;
-  --accent: #333333;
-  --accent-foreground: #f5f5f0;
-  --destructive: #ef4444;
-  --destructive-foreground: #f5f5f0;
-  --border: #f5f5f0;
-  --input: #f5f5f0;
-  --ring: #f5f5f0;
+  --background: #f7f1de;
+  --foreground: #4e220f;
+  --card: #ffffff;
+  --card-foreground: #4e220f;
+  --popover: #ffffff;
+  --popover-foreground: #4e220f;
+  --primary: #9d6638;
+  --primary-foreground: #f7f1de;
+  --secondary: #b0ba99;
+  --secondary-foreground: #4e220f;
+  --muted: #b0ba99;
+  --muted-foreground: #6b5b4f;
+  --accent: #9d6638;
+  --accent-foreground: #f7f1de;
+  --destructive: #dc2626;
+  --destructive-foreground: #f7f1de;
+  --border: #4e220f;
+  --input: #4e220f;
+  --ring: #9d6638;
 }
 
 @layer base {
@@ -85,5 +85,146 @@
 @layer utilities {
   .font-heading {
     font-family: var(--font-sans);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(157, 102, 56, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px 10px rgba(157, 102, 56, 0.1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.5s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(157, 102, 56, 0.1) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
   }
 }

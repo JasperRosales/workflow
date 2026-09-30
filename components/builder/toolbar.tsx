@@ -94,10 +94,10 @@ export function Toolbar({
               value={state.config.template}
               onValueChange={(value) => onTemplateChange(value as TemplateId)}
             >
-              <SelectTrigger size="sm" className="w-32">
+              <SelectTrigger className="w-32">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent align="end">
+              <SelectContent>
                 {TEMPLATES.map((template) => (
                   <SelectItem key={template.id} value={template.id}>
                     {template.label}

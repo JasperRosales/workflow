@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Slot } from "@base-ui/react"
+
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
@@ -44,14 +44,25 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
+  ({ className, variant, size, asChild = false, children, ...props }, ref) => {
+    const classes = cn(buttonVariants({ variant, size, className }))
+
+    if (asChild && React.isValidElement(children)) {
+      return React.cloneElement(children as React.ReactElement<any>, {
+        ...props,
+        ref,
+        className: cn(classes, (children.props as any).className),
+      })
+    }
+
     return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+      <button
+        className={classes}
         ref={ref}
         {...props}
-      />
+      >
+        {children}
+      </button>
     )
   }
 )

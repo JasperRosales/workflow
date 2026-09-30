@@ -23,7 +23,7 @@ const SelectTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <BaseSelect.Icon asChild>
+    <BaseSelect.Icon>
       <ChevronDown className="size-4 opacity-50" />
     </BaseSelect.Icon>
   </BaseSelect.Trigger>
@@ -32,9 +32,9 @@ SelectTrigger.displayName = "SelectTrigger"
 
 const SelectScrollUpButton = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<typeof BaseSelect.ScrollUpButton>
+  React.ComponentProps<typeof BaseSelect.ScrollUpArrow>
 >(({ className, ...props }, ref) => (
-  <BaseSelect.ScrollUpButton
+  <BaseSelect.ScrollUpArrow
     ref={ref}
     className={cn(
       "flex cursor-default items-center justify-center py-1",
@@ -43,15 +43,15 @@ const SelectScrollUpButton = React.forwardRef<
     {...props}
   >
     <ChevronUp className="size-4" />
-  </BaseSelect.ScrollUpButton>
+  </BaseSelect.ScrollUpArrow>
 ))
 SelectScrollUpButton.displayName = "SelectScrollUpButton"
 
 const SelectScrollDownButton = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<typeof BaseSelect.ScrollDownButton>
+  React.ComponentProps<typeof BaseSelect.ScrollDownArrow>
 >(({ className, ...props }, ref) => (
-  <BaseSelect.ScrollDownButton
+  <BaseSelect.ScrollDownArrow
     ref={ref}
     className={cn(
       "flex cursor-default items-center justify-center py-1",
@@ -60,36 +60,32 @@ const SelectScrollDownButton = React.forwardRef<
     {...props}
   >
     <ChevronDown className="size-4" />
-  </BaseSelect.ScrollDownButton>
+  </BaseSelect.ScrollDownArrow>
 ))
 SelectScrollDownButton.displayName = "SelectScrollDownButton"
 
 const SelectContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<typeof BaseSelect.Popup>
->(({ className, children, position = "popper", ...props }, ref) => (
+  React.ComponentProps<typeof BaseSelect.Positioner>
+>(({ className, children, ...props }, ref) => (
   <BaseSelect.Portal>
     <BaseSelect.Positioner
       ref={ref}
       className={cn(
         "relative z-50 max-h-96 min-w-[8rem] overflow-hidden border-2 border-foreground bg-background text-foreground shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
-        position === "popper" &&
-          "data-[side=bottom]:translate-y-1 data-[side=top]:-translate-y-1",
         className
       )}
-      position={position}
       {...props}
     >
       <SelectScrollUpButton />
-      <BaseSelect.Viewport
+      <div
         className={cn(
           "p-1",
-          position === "popper" &&
-            "h-[var(--select-trigger-height)] w-full min-w-[var(--select-trigger-width)] scroll-my-1 overflow-x-hidden overflow-y-auto"
+          "h-[var(--select-trigger-height)] w-full min-w-[var(--select-trigger-width)] scroll-my-1 overflow-x-hidden overflow-y-auto"
         )}
       >
         {children}
-      </BaseSelect.Viewport>
+      </div>
       <SelectScrollDownButton />
     </BaseSelect.Positioner>
   </BaseSelect.Portal>

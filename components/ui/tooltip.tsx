@@ -11,12 +11,11 @@ const TooltipTrigger = BaseTooltip.Trigger
 
 const TooltipContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<typeof BaseTooltip.Popup>
->(({ className, sideOffset = 4, ...props }, ref) => (
+  React.ComponentProps<typeof BaseTooltip.Positioner>
+>(({ className, ...props }, ref) => (
   <BaseTooltip.Portal>
     <BaseTooltip.Positioner
       ref={ref}
-      sideOffset={sideOffset}
       className={cn(
         "z-50 animate-in overflow-hidden border-2 border-foreground bg-background px-3 py-1.5 text-sm font-bold tracking-wide text-foreground uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] fade-in-0 zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
         className

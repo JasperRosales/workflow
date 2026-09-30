@@ -136,7 +136,7 @@ export function ResultsView({ result }: { result: AnalysisResult }) {
                 {category.score}/100 - {Math.round(category.weight * 100)}%
               </span>
             </div>
-            <Progress value={category.score}>
+            <Progress value={category.score} max={100}>
               <ProgressTrack>
                 <ProgressIndicator
                   className={

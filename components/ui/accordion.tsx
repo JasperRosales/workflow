@@ -22,7 +22,7 @@ AccordionItem.displayName = "AccordionItem"
 
 const AccordionTrigger = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<typeof BaseAccordion.Header>
+  React.ComponentProps<typeof BaseAccordion.Trigger>
 >(({ className, children, ...props }, ref) => (
   <BaseAccordion.Header>
     <BaseAccordion.Trigger

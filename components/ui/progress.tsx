@@ -7,9 +7,9 @@ import { cn } from "@/lib/utils"
 
 const Progress = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<typeof BaseProgress>
+  React.ComponentProps<typeof BaseProgress.Root>
 >(({ className, ...props }, ref) => (
-  <BaseProgress
+  <BaseProgress.Root
     ref={ref}
     className={cn(
       "relative h-4 w-full overflow-hidden border-2 border-foreground bg-background",
