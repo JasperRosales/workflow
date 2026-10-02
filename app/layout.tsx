@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 
-import { ThemeProvider } from "@/components/theme-provider"
+
 import "./globals.css"
 
 const geistSans = Geist({
@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Workflow - CV Builder & Resume Analyzer",
+  title: "Workflow - A setup of tools for efficient workflows",
   description:
-    "Build professional resumes and analyze them for ATS compatibility",
+    "A setup of tools for efficient workflows, including a CV builder and resume analyzer",
 }
 
 export default function RootLayout({
@@ -30,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        {children}
       </body>
     </html>
   )

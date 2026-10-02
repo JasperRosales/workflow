@@ -5,22 +5,38 @@ import { Progress as BaseProgress } from "@base-ui/react"
 
 import { cn } from "@/lib/utils"
 
-const Progress = React.forwardRef<
+interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
+  value: number
+  max?: number
+}
+
+const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
+  ({ className, value, max = 100, ...props }, ref) => (
+    <BaseProgress.Root
+      ref={ref}
+      value={value}
+      max={max}
+      className={cn(
+        "relative h-4 w-full overflow-hidden border-2 border-foreground bg-background",
+        className
+      )}
+      {...props}
+    />
+  )
+)
+Progress.displayName = "Progress"
+
+const ProgressTrack = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<typeof BaseProgress.Root>
+  React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <BaseProgress.Root
+  <div
     ref={ref}
-    className={cn(
-      "relative h-4 w-full overflow-hidden border-2 border-foreground bg-background",
-      className
-    )}
+    className={cn("h-full w-full", className)}
     {...props}
   />
 ))
-Progress.displayName = "Progress"
-
-const ProgressTrack = Progress
+ProgressTrack.displayName = "ProgressTrack"
 
 const ProgressIndicator = React.forwardRef<
   HTMLDivElement,

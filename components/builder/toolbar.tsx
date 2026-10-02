@@ -19,15 +19,12 @@ import {
 import { ACCENTS, TEMPLATES } from "@/lib/constants"
 import type { AccentId, ResumeState, TemplateId } from "@/lib/types"
 import { cn } from "@/lib/utils"
-import { useTheme } from "next-themes"
 import {
   FileDown,
   FileJson2,
   FolderOpen,
-  Moon,
   RotateCcw,
   ShieldCheck,
-  Sun,
   WandSparkles,
 } from "lucide-react"
 
@@ -63,12 +60,6 @@ export function Toolbar({
   onOpenChecklist,
   pdfBusy,
 }: ToolbarProps) {
-  const { resolvedTheme, setTheme } = useTheme()
-  const mounted = React.useSyncExternalStore(
-    React.useCallback(() => () => undefined, []),
-    () => true,
-    () => false
-  )
   const fileInputRef = React.useRef<HTMLInputElement>(null)
 
   return (
@@ -128,18 +119,6 @@ export function Toolbar({
                 />
               ))}
             </div>
-
-            <Tooltip>
-              <TooltipTrigger
-                render={<Button size="icon-sm" variant="ghost" />}
-                onClick={() =>
-                  setTheme(resolvedTheme === "dark" ? "light" : "dark")
-                }
-              >
-                {mounted && (resolvedTheme === "dark" ? <Sun /> : <Moon />)}
-              </TooltipTrigger>
-              <TooltipContent>Toggle theme</TooltipContent>
-            </Tooltip>
 
             <Tooltip>
               <TooltipTrigger
